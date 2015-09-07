@@ -9,6 +9,7 @@ Docker is capable of creating a minimal Ubuntu 14.04 installation in which we in
 
 ## Getting the latest version of Kicad
 
+(this section is outdated!)
 These scripts *add the kicad daily ppa* to the host system, but *do not install Kicad on it*. They add the repository to get the name of the latest version of Kicad.
 
 The bash scripts that adds the ppa (if necessary), updates the debian package list and gets the latest Kicad version is `$ ./scripts/get_latest_kicad.sh`
