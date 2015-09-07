@@ -101,7 +101,7 @@ if __name__ == '__main__':
 
     # Replace kicad build script
     f = os.path.join(dest_dir, 'docker/kicad-install.sh')
-    vars = get_latest_source_lib_doc(LIB_COMMIT_SHA)
+    vars = get_latest_source_lib(LIB_COMMIT_SHA)
     replace_template(f, vars, f)
 
     # Replace install libs script
