@@ -1,50 +1,57 @@
-# docker-kicad
+# What is this?
 
-Latest KiCad installed inside a docker container from ppa:js-reynaud/ppa-kicad
+Kicad is evolving very rapidly, which is a very good thing! However, it is quite frustrating that when opening a project we worked on some time ago, with an older version of Kicad, we end up with broken schematics or worse.
 
-# Launching GUI
+We want to be able to use always the latest version of Kicad when starting a new project, and then be able to freeze it for that project. So, if we stop working on it for some time and then go back, always have the same Kicad version (and libraries) that we used to create the design.
 
-Allow X connections from anywhere with `xhost +` on container.
+To achieve this we use Docker to create and isolated environment where we can install a particular version of Kicad and use always the same one.
 
-Run docker container with the following extra arguments;
- * `-v /tmp/.X11-unix:/tmp/.X11-unix` - Maps the X11 sockets into the docker container. 
- * `-e DISPLAY=$DISPLAY` - Set up the $DISPLAY environment variable.
+# Usage
 
-See http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/
+You need to have docker installed on your computer. You can use [this summarized instructions](docs/docker_install.md).
 
+## Creating a new project
 
+To simplify as much as possible the creation of a new project there is an automated script that creates an new project directory with the ready to use Dockerfile.
 
-<br><br><br><br><br><br>
+To use it:
 
-# KiCad EDA Software Suite
+`$ ./new_kicad_project <path to where we want the project>`
 
-[KiCad][1] is an EDA software suite for the creation of professional schematics and printed circuit boards up to 32 copper layers. KiCad runs on Windows, Linux and Apple OS X and is released under the open-source GNU GPL v2 free of charge.
+For example, if we want to create a project named 'Tiburoncin' in our home directory, we would run:
 
-![KiCad Pcbnew, printed circuit board editor.][2]
+`$ ./new_kicad_project ~/Tiburoncin`
 
-With [KiCad][3] you can create schematic diagrams and printed circuit board up to 32 copper layers. [KiCad][4] comes with a rich set of libraries with 3D models as well.
+That will create the Tiburoncin directory and inside it the docker files needed to build the image with the latest Kicad. It will also:
 
-[KiCad][5] includes a project manager and four main independent software tools:
+1. Add some useful files
+1. Build the Docker image
+1. Create a git repository in that directory
 
- - **Eeschema**, schematic editor.
- - **Pcbnew**, printed circuit board editor.
- - **Gerbview**, GERBER file viewer.
- - **Cvpcb**, footprint selector for components association.
+## How to use the project
 
-![KiCad Project][6]
-![KiCad 3d Viewer][7]
-![KiCad PCBnew][8]
-![KiCad EESchema][9]
-![KiCad CVPCB][10]
+Once we created the project, we `cd` into the new directory and we will find the following files:
 
-  [1]: http://www.kicad-pcb.org/
-  [2]: http://www.kicad-pcb.org/download/attachments/589828/kicad_pcbnew.png
-  [3]: http://www.kicad-pcb.org/
-  [4]: http://www.kicad-pcb.org/
-  [5]: http://www.kicad-pcb.org/
-  [6]: http://www.kicad-pcb.org/download/thumbnails/589828/kicad.png
-  [7]: http://www.kicad-pcb.org/download/thumbnails/589828/kicad_3dviewer.png
-  [8]: http://www.kicad-pcb.org/download/thumbnails/589828/kicad_pcbnew.png
-  [9]: http://www.kicad-pcb.org/download/thumbnails/589828/kicad_eeschema.png
-  [10]: http://www.kicad-pcb.org/download/thumbnails/589828/kicad_cvpcb.png
+```
+docker/
+pcb/
+setup.bash
+README.md
+```
 
+To start working on the PCB we:
+
+1. `$ source setup.bash`
+1. `$ docker-kicad`
+
+## How to use an existing project
+
+When starting to work on an existing project (a project we just cloned from github for example), we need to follow these steps:
+
+1. `$ source setup.bash`
+1. `$ build-kicad-docker`
+1. `$ docker-kicad`
+
+# More information
+
+You can read about how this works on [this document](docs/how_it_works.md)
