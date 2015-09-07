@@ -36,6 +36,6 @@ RUN download-kicad-library.sh
 ENV KISYSMOD /home/kicad/kicad_libs/library-repos
 
 # Configuration and start up
-VOLUME ["/home/kicad/projects", "/home/kicad/.kicad"]
+VOLUME ["/home/kicad/.kicad"]
 WORKDIR /home/kicad/
 ENTRYPOINT ["kicad"]
