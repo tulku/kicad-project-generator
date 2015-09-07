@@ -42,15 +42,21 @@ README.md
 To start working on the PCB we:
 
 1. `$ source setup.bash`
-1. `$ docker-kicad`
+1. `$ docker_kicad`
+
+Inside the kicad instance you will find that the paths are not the same. The program will be running from the home directory of a kicad *user*. In that home directory, you will find a folder with the same name as the project you created. That is the *same* project folder that you just created.
 
 ## How to use an existing project
 
-When starting to work on an existing project (a project we just cloned from github for example), we need to follow these steps:
+When starting to work on an existing project (a project we just cloned from github for example), we need to follow these steps only once:
 
 1. `$ source setup.bash`
-1. `$ build-kicad-docker`
-1. `$ docker-kicad`
+1. `$ cd docker`
+1. `$ docker_build` (wait a lot of time...)
+
+Afther that, we start kicad (after source the setup.bash)
+
+1. `$ dockerr_kicad`
 
 # More information
 
