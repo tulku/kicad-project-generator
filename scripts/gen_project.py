@@ -115,5 +115,6 @@ if __name__ == '__main__':
 
     # Replace the setup.bash
     f = os.path.join(dest_dir, 'setup.bash')
-    vars = {'PROJECT_NAME': proj_name, 'PROJECT_PATH': dest_dir}
+    name = proj_name.lower()
+    vars = {'PROJECT_NAME': name, 'PROJECT_PATH': dest_dir}
     replace_template(f, vars, f)
