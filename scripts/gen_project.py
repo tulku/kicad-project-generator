@@ -12,8 +12,9 @@ LIB_OUT_PATH = ""
 try:
     from github_token import GITHUB_TOKEN
 except ImportError:
-    print 'You need to provide a github personal authorizatin token first!'
-    print 'To do that, go to: https://github.com/settings/tokens'
+    print 'You need to provide a github personal authorization token first!'
+    print 'You should read the documentation in: https://github.com/cdrfiuba/kicad-project-generator'
+    print 'and go to: https://github.com/settings/tokens'
     sys.exit(1)
 
 

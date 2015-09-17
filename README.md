@@ -10,6 +10,20 @@ To achieve this we use Docker to create and isolated environment where we can in
 
 You need to have docker installed on your computer. You can use [this summarized instructions](docs/docker_install.md).
 
+## Adding your github credentials
+
+This script uses the GitHub API to look for the newest version of Kicad and it's libraries. To do that we need
+to authenticate with the API. For this we need:
+
+1. A github account.
+1. To get an application token, as explained here: https://github.com/settings/tokens
+1. Clone this repo, cd to the directory and,
+1. Run the following command:
+
+```
+./save_github_token <token>
+```
+
 ## Creating a new project
 
 To simplify as much as possible the creation of a new project there is an automated script that creates an new project directory with the ready to use Dockerfile.
