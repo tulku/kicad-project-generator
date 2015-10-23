@@ -56,7 +56,7 @@ When starting to work on an existing project (a project we just cloned from gith
 
 Afther that, we start kicad (after source the setup.bash)
 
-1. `$ dockerr_kicad`
+1. `$ docker_kicad`
 
 # More information
 
