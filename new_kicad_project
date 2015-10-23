@@ -20,8 +20,9 @@ cp -r project/.gitignore $1
 cd $1
 
 . setup.bash
+proj=${1,,}
 cd docker/
-${1}_docker_build
+${proj}_docker_build
 
 # 4. Start the git repository
 cd ..
